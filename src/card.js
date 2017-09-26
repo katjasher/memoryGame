@@ -7,11 +7,6 @@ const Card = (props) => (
 	</div>
 )
 
-const Card1 = (props) => (
-	<div className="cardBack">
-		<img src={props.src} />
-	</div>
-)
 
 
-export default Card; Card1
+export default Card
