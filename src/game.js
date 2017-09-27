@@ -22,7 +22,7 @@ class Game extends React.Component{
 
 	}
 
-		setupGame = () => {
+	setupGame = () => {
 		const doublePictures = pictures.concat(pictures)
 		const shuffledPictures = shuffle(doublePictures)
 		return shuffledPictures.map (
@@ -31,16 +31,21 @@ class Game extends React.Component{
 				exists: true,
 				isFlipped: false 
 			}))
-		}
+	}
 
+	// New function that will take one argument and logs it
+	handleCardClick = (cardSrc) => {
+			console.log(cardSrc)
+	}
 
-
+	// The whenCardClicked is now a prop in the Card component, so we can now refer to onClick as a prop within Card
 	render () {
 		return (
-		<div>
-		<h1 className="header"> Come and play a memory game with me!</h1>
-		{this.state.cards.map((card) => (<Card src={card.src} />) )}
-		</div>
+			<div>
+			<h1 className="header"> Come and play a memory game with me!</h1>
+			// <p> </p>
+			{this.state.cards.map((card) => (<Card src={card.src} whenCardClicked = {this.handleCardClick} />) )}
+			</div>
 		)
 
 	}
