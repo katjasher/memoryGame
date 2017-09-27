@@ -1,6 +1,6 @@
 import React from "react"
 import Card from "./card"
-import Counter from "./counter"
+//import Counter from "./counter"
 
 const pictures = [
 		"/images/Budapest1.jpg",
@@ -21,15 +21,15 @@ class Game extends React.Component{
 	}
 
 	}
-	
-	setupGame = () => {
-		return pictures.map (
+
+		setupGame = () => {
+		const doublePictures = pictures.concat(pictures)
+		return doublePictures.map (
 			(photo) => ({
 				src: photo,
 				isFlipped: false
 			}))
-	}
-
+		}		
 
 	render () {
 		return (

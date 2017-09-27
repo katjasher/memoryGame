@@ -1,8 +1,8 @@
 import React from "react"
 
-	class Counter extends React.Component {
+	class Game extends React.Component {
 
-		state = {
+		/*state = {
 			count: 10
 		}
 
@@ -23,7 +23,7 @@ import React from "react"
 				<button onClick={this.handleButtonClick2}>Subtract!</button>
 				</div>
 				)
-		}
+		}*/
 
 	}
 	export default Counter
