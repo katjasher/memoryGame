@@ -1,0 +1,10 @@
+.card img {
+	float: left;
+	display: inline-block;
+	width: 320px;
+	height: 190px;
+	border: 3px solid #ffffff;
+	/*border: 3px solid #e6ecff;*/
+	border-radius: 10px;
+	margin: 5px;
+  }
