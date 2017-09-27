@@ -1,6 +1,7 @@
 import React from "react"
 import Card from "./card"
 import shuffle from "shuffle-array"
+import uuidv4 from "uuid/v4"
 
 const pictures = [
 		"/images/Budapest1.jpg",
@@ -28,6 +29,7 @@ class Game extends React.Component{
 		return shuffledPictures.map (
 			(photo) => ({
 				src: photo,
+				id: uuidv4(),
 				exists: true,
 				isFlipped: false 
 			}))
@@ -44,7 +46,7 @@ class Game extends React.Component{
 			<div>
 			<h1 className="header"> Come and play a memory game with me!</h1>
 			// <p> </p>
-			{this.state.cards.map((card) => (<Card src={card.src} whenCardClicked = {this.handleCardClick} />) )}
+			{this.state.cards.map((card) => (<Card src={card.src} key={card.id} id={card.id} whenCardClicked = {this.handleCardClick} />) )}
 			</div>
 		)
 

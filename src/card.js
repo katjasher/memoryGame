@@ -12,8 +12,7 @@ class Card extends React.Component {
 	// This will call the "whenCardClicked" function that was passed into the Card as a prop from the Game component
 	
 	handleClick = () => {
-		//isFlipped: true
-		this.props.whenCardClicked(this.props.src)
+		this.props.whenCardClicked(this.props.id)
 	}
 
 	// render() is a required function
