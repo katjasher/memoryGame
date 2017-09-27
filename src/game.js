@@ -45,7 +45,6 @@ class Game extends React.Component{
 		return (
 			<div>
 			<h1 className="header"> Come and play a memory game with me!</h1>
-			// <p> </p>
 			{this.state.cards.map((card) => (<Card src={card.src} key={card.id} id={card.id} whenCardClicked = {this.handleCardClick} />) )}
 			</div>
 		)
