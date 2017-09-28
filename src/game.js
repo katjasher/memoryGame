@@ -26,22 +26,31 @@ class Game extends React.Component{
 		const doublePictures = pictures.concat(pictures)
 		const shuffledPictures = shuffle(doublePictures)
 		return shuffledPictures.map (
-			(photo) => ({
-				src: photo,
+			(url) => ({
+				src: url,
 				id: uuidv4(),
 				isFlipped: false,
+				isMatched: false,
 				exists: true
 			}))
 	}
 
-	// New function that will take one argument and logs it
-	handleCardClick = (cardId) => {
+	// New function will be called from the card component
+	// because we have passed it as a prop (called whenCardClicked) when we render the card component.
+	// To generate the new state we need to .map over the old state, and if the card we are mapping over
+	// is the clicked card, we need to set its 'isFlipped' value to be true. Otherwise we don't need to
+	// change the state for that card.
+	// Finally we call 'this.setState' with the new array that we've built.
+	
+	handleCardClick = (clickedCardId) => {
 			const newCardsState = this.state.cards.map((card) => {
-				if (card.id===cardId){card.isFlipped=true}
+				if (card.id===clickedCardId){card.isFlipped=true}
 				return card;
 				}
 			)
-			this.setState ({cards: newCardsState})
+			//const checkNumberCardsFlipped = this.state.cards.forEach
+
+			this.setState ({cards: newCardsState}, () => console.log(this.state))
 	}
 
 
@@ -53,9 +62,11 @@ class Game extends React.Component{
 			{this.state.cards.map((card) => 
 				(<Card 
 					src={card.src} 
-					key={card.id} 
-					isFlipped={card.isFlipped} 
-					id={card.id} 
+					key={card.id}
+					id={card.id}
+					isFlipped={card.isFlipped}
+					isMatched={card.isMatched}
+					exists = {card.exists} 
 					whenCardClicked = {this.handleCardClick} />) )}
 			</div>
 		)
