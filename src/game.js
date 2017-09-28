@@ -41,16 +41,30 @@ class Game extends React.Component{
 	// is the clicked card, we need to set its 'isFlipped' value to be true. Otherwise we don't need to
 	// change the state for that card.
 	// Finally we call 'this.setState' with the new array that we've built.
-	
+
 	handleCardClick = (clickedCardId) => {
 			const newCardsState = this.state.cards.map((card) => {
 				if (card.id===clickedCardId){card.isFlipped=true}
 				return card;
 				}
 			)
-			//const checkNumberCardsFlipped = this.state.cards.forEach
+			this.setState ({cards: newCardsState}, this.checkIfCardsMatch)
+	}
 
-			this.setState ({cards: newCardsState}, () => console.log(this.state))
+	checkIfCardsMatch = () => {
+		const flippedCards = this.state.cards.filter((clickedCard) => {
+				return clickedCard.isFlipped
+
+			})
+
+		const newCardsState = this.state.cards.map((card) => {
+			if(flippedCards.length===2){
+				card.isFlipped=false
+			}
+			return card
+		})
+
+		this.setState ({cards: newCardsState})
 	}
 
 
