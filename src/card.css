@@ -25,6 +25,10 @@
 	visibility: hidden;
 }
 
-.cardBack {
+.card.flipped.matched {
+	visibility: hidden;
+}
+
+.card.flipped.matched img {
 	visibility: hidden;
 }

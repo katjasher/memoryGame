@@ -18,7 +18,9 @@ class Card extends React.Component {
 	// Function that changes class name basen on whether the card is flipeed or not
 
 	changeClassOnFlip = () => {
-		if(this.props.isFlipped){
+		if(this.props.isMatched){
+			return "card flipped matched"
+		} else if (this.props.isFlipped){
 			return "card flipped"
 		} else {
 			return "card non-flipped"

@@ -2,6 +2,7 @@ import React from "react"
 import Card from "./card"
 import shuffle from "shuffle-array"
 import uuidv4 from "uuid/v4"
+import SuccessMessage from "./SuccessMessage"
 
 const pictures = [
 	"/images/Budapest1.jpg",
@@ -56,31 +57,66 @@ class Game extends React.Component{
 				return clickedCard.isFlipped
 
 			})
+		// console.log(flippedCards)
 
-		const newCardsState = this.state.cards.map((card) => {
-			if(flippedCards.length===2){
-				card.isFlipped=false
-			}
-			return card
-		})
+		// If there's 2 flippedCards, we want to hide them
 
-		this.setState ({cards: newCardsState})
+		if (flippedCards.length === 2) {
+			setTimeout(() => {
+				const newCardsState = this.state.cards.map((card) => {
+					if(flippedCards[0].src === flippedCards[1].src && card.isFlipped){
+						card.isMatched=true
+						card.exists=false
+					}
+					card.isFlipped=false
+					return card
+				})
+				this.setState ({cards: newCardsState}, this.checkIfAnyCardLeft)	
+			}, 1000) // 1000 is the number of milliseconds we're waiting to execute the function
+		}
 	}
 
+		// if (flippedCards.length === 2) {
+		// 	setTimeout(() => {
+		// 		if(flippedCards[0].src === flippedCards[1].src) {
+		// 			const newCardsState = this.state.cards.map((card) => {
+		// 				if(card.isFlipped) {
+		// 					card.isMatched=true
+		// 					card.isFlipped=false
+		// 					card.exists=false
+		// 				}
+		// 					return card})
+		// 			this.setState ({cards: newCardsState}, this.checkIfAnyCardLeft)
+		// 		} else {
+		// 			const newCardsState = this.state.cards.map((card) => {
+		// 				card.isFlipped=false
+		// 				return card})
+		// 			this.setState ({cards: newCardsState}, this.checkIfAnyCardLeft)
+		// 		}
+		// 	}, 1000) // 1000 is the number of milliseconds we're waiting to execute the function
+		// }
+
+
+	checkIfAnyCardLeft = () => {
+		const noCardsLeft = this.state.cards.filter((clickedCard) => {
+				return clickedCard.exists
+			})
+		console.log(noCardsLeft.length)
+	}
 
 	// The whenCardClicked is now a prop in the Card component, so we can now refer to onClick as a prop within Card
 	render () {
 		return (
 			<div>
-			<h1 className="header"> Come and play a memory game with me!</h1>¢
+			<h1 className="header"> Come and play a memory game with me!</h1>
 			{this.state.cards.map((card) => 
 				(<Card 
 					src={card.src} 
 					key={card.id}
 					id={card.id}
+					exists={card.exists}
 					isFlipped={card.isFlipped}
 					isMatched={card.isMatched}
-					exists = {card.exists} 
 					whenCardClicked = {this.handleCardClick} />) )}
 			</div>
 		)
