@@ -86,10 +86,15 @@ class Game extends React.Component{
 		const newCardsState = () => {
 			if(noCardsLeft.length===0) {
 				return "Finished"
-			} else {return "In process"}
+			} else {
+				return "In process"
+			}
 		}
 		this.setState ({gameStatus: newCardsState()})
-		//console.log(noCardsLeft.length)
+	}
+
+	resetGame = () => {
+		this.setState ({cards: this.setupGame(), gameStatus: "Not started"})
 	}
 
 	// The whenCardClicked is now a prop in the Card component, so we can now refer to onClick as a prop within Card
@@ -97,7 +102,8 @@ class Game extends React.Component{
 		return (
 			<div className="game">
 			<h1 className="header"> Come and play a memory game with me!</h1>
-			{this.state.gameStatus==="Finished" && <SuccessMessage />}
+			{this.state.gameStatus==="Finished" && <SuccessMessage 
+					resetTheGame={this.resetGame}/>}
 			<div> {this.state.cards.map((card) => 
 				(<Card 
 					src={card.src} 

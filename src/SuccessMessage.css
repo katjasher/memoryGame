@@ -11,19 +11,41 @@
 	background-color: #1ad1ff;
 	font-family: 'Fredericka the Great', cursive;
 	text-align: center;
+	color: #002266;
+	/*color: #0044cc;*/
 	display: inline-block;
 }
-.successMessage p{
-	font-size: 250%;
+
+.successMessage p {
+	font-size: 220%;
 }
 
+.successMessage div {
+	font-size: 400%;
+}
+
+/*.successMessageInline {
+	position: relative;
+	left: 20%;
+	top: 10%;
+	width: 50%;
+	height: 30%;
+	border: 4px solid #ffffff;
+	border-radius: 15px;
+	background-color: #1ad1ff;
+	font-family: 'Fredericka the Great', cursive;
+	text-align: center;
+	color: #002266;
+	color: #0044cc;
+	display: inline-block;} */
+
 .playAgain {
-	width: 30%;
-	height: 40%;
+	width: 60%;
+	height: 70%;
 	text-align: center;
 	color: #ffffff;
 	font-family: 'Fredericka the Great', cursive;
-	font-size: 100%;
+	font-size: 350%;
 	background-color: #0044cc;
 	border: 2px solid #ffffff;
 	border-radius: 6px;
