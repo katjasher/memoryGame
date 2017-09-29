@@ -8,6 +8,9 @@ body {
   color: #ffffff;
 }
 
+.game{
+	position: absolute;
+}
 .header{
 	text-align: center;
 	font-size: 3em;
