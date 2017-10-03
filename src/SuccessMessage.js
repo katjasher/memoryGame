@@ -9,7 +9,7 @@ class SuccessMessage extends React.Component {
 		<br/>
 		<h2>CONGRATULATIONS</h2>
 		<p>You matched all the cards!</p>
-		<p>Click on the button if you want to play another round</p> <br/>
+		<p>Click the button below if you want to play another round</p> <br/>
 		<button className="playAgain" onClick={this.props.resetTheGame}> Reset the game</button> <br/>
 		<p></p>
 		</div>

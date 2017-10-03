@@ -8,9 +8,9 @@ import SuccessMessage from "./SuccessMessage"
 const pictures = [
 	"/images/Budapest1.jpg",
 	"/images/Budapest2.jpg",
-	"/images/Budapest3.jpg",
-	"/images/Budapest4.jpg"
+	"/images/Budapest3.jpg"
 	// ,
+	// "/images/Budapest4.jpg",
 	// "/images/Budapest5.jpg",
 	// "/images/Budapest6.jpg",
 	// "/images/Budapest7.jpg",
