@@ -4,14 +4,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Fredericka the Great', cursive;
-  background: url("/images/background1.jpg") no-repeat center center fixed;
+  text-align: center;
   color: #ffffff;
+  background: url("/images/background1.jpg") repeat center center fixed;
 }
 
 .game{
-	position: absolute;
+	width: 90%;
+	display: inline-block;
+	/*margin: auto;*/
 }
-.header{
+
+h1.header{
+	display: inline-block;
 	text-align: center;
 	font-size: 3em;
 	color: #b3c6ff;

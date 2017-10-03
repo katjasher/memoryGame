@@ -1,4 +1,5 @@
 import React from "react"
+import StartScreen from "./StartScreen"
 import Card from "./card"
 import shuffle from "shuffle-array"
 import uuidv4 from "uuid/v4"
@@ -8,9 +9,14 @@ const pictures = [
 	"/images/Budapest1.jpg",
 	"/images/Budapest2.jpg",
 	"/images/Budapest3.jpg",
-	"/images/Budapest4.jpg",
-	"/images/Budapest5.jpg",
-	"/images/Budapest6.jpg"
+	"/images/Budapest4.jpg"
+	// ,
+	// "/images/Budapest5.jpg",
+	// "/images/Budapest6.jpg",
+	// "/images/Budapest7.jpg",
+	// "/images/Budapest8.jpg",
+	// "/images/Budapest9.jpg",
+	// "/images/Budapest10.jpg"
 ]
 
 class Game extends React.Component{
@@ -99,11 +105,11 @@ class Game extends React.Component{
 	// The whenCardClicked is now a prop in the Card component, so we can now refer to onClick as a prop within Card
 	render () {
 		return (
-			<div className="game">
+			<div>
 			<h1 className="header"> Come and play a memory game with me!</h1>
 			{this.state.gameStatus==="Finished" && <SuccessMessage 
 					resetTheGame={this.resetGame}/>}
-			<div> {this.state.cards.map((card) => 
+			<div className="game"> {this.state.cards.map((card) => 
 				(<Card 
 					src={card.src} 
 					key={card.id}
