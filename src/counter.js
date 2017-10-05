@@ -1,8 +1,30 @@
 import React from "react"
+import "./counter.css"
 
-	class Game extends React.Component {
+	class Counter extends React.Component {
 
-		/*state = {
+		changeClassOnGameOver = () => {
+			if(this.props.status==="Finished"){
+				return "finalScore"
+			} else {
+				return "score"
+			}
+		}
+
+		render(){
+			return(
+				<div className={this.changeClassOnGameOver()}>
+				Score: {this.props.score}
+				</div>
+				)
+		}
+
+	}
+	export default Counter
+
+
+
+	/*state = {
 			count: 10
 		}
 
@@ -24,6 +46,3 @@ import React from "react"
 				</div>
 				)
 		}*/
-
-	}
-	export default Counter

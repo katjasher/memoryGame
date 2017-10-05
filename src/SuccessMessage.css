@@ -13,11 +13,13 @@
 }
 
 .successMessage p {
-	font-size: 30px;
+	font-size: 2.1vw;
+	/*font-size: 30px;*/
 }
 
 .successMessage h2 {
-	font-size: 50px;
+	font-size: 3.5vw;
+	/*font-size: 50px;*/
 }
 
 .playAgain {
@@ -26,7 +28,8 @@
 	text-align: center;
 	color: #ffffff;
 	font-family: 'Fredericka the Great', cursive;
-	font-size: 50px;
+	font-size: 3.5vw;
+	/*font-size: 50px;*/
 	/*font-size: 350%;*/
 	background-color: #0044cc;
 	border: 2px solid #ffffff;

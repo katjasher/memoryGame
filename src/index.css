@@ -10,14 +10,20 @@ body {
 }
 
 .game{
-	width: 90%;
+	width: 75%;
 	display: inline-block;
+	padding: 5px;
 	/*margin: auto;*/
+}
+
+.gameOver{
+	display: none;
 }
 
 h1.header{
 	display: inline-block;
 	text-align: center;
-	font-size: 3em;
+	font-size: 3.5vw;
+	/*font-size: 3em;*/
 	color: #b3c6ff;
 }

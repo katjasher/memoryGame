@@ -1,0 +1,11 @@
+.finalScore{
+	display: none;
+}
+
+.score{
+	float: left;
+	display: inline-block;
+	text-align: center;
+	font-size: 3vw;
+	padding: 5px;
+}

@@ -1,17 +1,17 @@
 import React from "react"
-import StartScreen from "./StartScreen"
 import Card from "./card"
 import shuffle from "shuffle-array"
 import uuidv4 from "uuid/v4"
 import SuccessMessage from "./SuccessMessage"
+import Counter from "./counter"
 
 const pictures = [
 	"/images/Budapest1.jpg",
 	"/images/Budapest2.jpg",
-	"/images/Budapest3.jpg"
+	"/images/Budapest3.jpg",
+	"/images/Budapest4.jpg",
+	"/images/Budapest5.jpg"
 	// ,
-	// "/images/Budapest4.jpg",
-	// "/images/Budapest5.jpg",
 	// "/images/Budapest6.jpg",
 	// "/images/Budapest7.jpg",
 	// "/images/Budapest8.jpg",
@@ -25,7 +25,8 @@ class Game extends React.Component{
 		super(props)
 		this.state = {
 			cards: this.setupGame(),
-			gameStatus: "Not started"
+			gameStatus: "Not started",
+			score: 0
 	}
 
 	}
@@ -78,38 +79,60 @@ class Game extends React.Component{
 					card.isFlipped=false
 					return card
 				})
-				this.setState ({cards: newCardsState}, this.checkIfAnyCardLeft)	
+
+				const newScoreState = () => {
+					if(flippedCards[0].src === flippedCards[1].src){
+						return this.state.score + 2
+					} else {
+						return this.state.score - 1
+					}
+				}
+
+
+				this.setState ({cards: newCardsState, score: newScoreState()}, this.checkIfAnyCardLeft)	
 			}, 1000) // 1000 is the number of milliseconds we're waiting to execute the function
 		}
 	}
-
 
 	checkIfAnyCardLeft = () => {
 		const noCardsLeft = this.state.cards.filter((clickedCard) => {
 				return clickedCard.exists
 			})
-		const newCardsState = () => {
+
+		const newGameStatusState = () => {
 			if(noCardsLeft.length===0) {
 				return "Finished"
 			} else {
 				return "In process"
 			}
 		}
-		this.setState ({gameStatus: newCardsState()})
+		this.setState ({gameStatus: newGameStatusState()})
+	}
+
+	hideGameDiv = () => {
+		if(this.state.gameStatus==="Finished"){
+			return "gameOver"
+		} else {
+			return "game"
+		}
 	}
 
 	resetGame = () => {
-		this.setState ({cards: this.setupGame(), gameStatus: "Not started"})
+		this.setState ({cards: this.setupGame(), score: 0, gameStatus: "Not started"})
 	}
 
 	// The whenCardClicked is now a prop in the Card component, so we can now refer to onClick as a prop within Card
 	render () {
 		return (
 			<div>
-			<h1 className="header"> Come and play a memory game with me!</h1>
-			{this.state.gameStatus==="Finished" && <SuccessMessage 
+			<h1 className="header"> Play a memory game with me!</h1>
+			{this.state.gameStatus==="Finished" && <SuccessMessage
+					score={this.state.score}
 					resetTheGame={this.resetGame}/>}
-			<div className="game"> {this.state.cards.map((card) => 
+			<div><Counter
+				score={this.state.score}
+				status={this.state.gameStatus}/></div>
+			<div className={this.hideGameDiv()}> {this.state.cards.map((card) => 
 				(<Card 
 					src={card.src} 
 					key={card.id}
