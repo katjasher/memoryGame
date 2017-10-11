@@ -10,9 +10,9 @@ const pictures = [
 	"/images/Budapest2.jpg",
 	"/images/Budapest3.jpg",
 	"/images/Budapest4.jpg",
-	"/images/Budapest5.jpg"
-	// ,
-	// "/images/Budapest6.jpg",
+	"/images/Budapest5.jpg",
+	"/images/Budapest6.jpg"
+	//,
 	// "/images/Budapest7.jpg",
 	// "/images/Budapest8.jpg",
 	// "/images/Budapest9.jpg",
